@@ -1,5 +1,5 @@
 # sunrise
-Display sunset and sunrise times as an all day event from a constantly updating iCalendar in Google Calendar, your phone or elsewhere.
+Display sunset and sunrise times as all day events from an iCalendar feed in Google Calendar, your phone or elsewhere.
 
 ## usage
 
