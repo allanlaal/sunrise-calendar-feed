@@ -14,19 +14,22 @@ The latitude of your location, in degrees.
 ### longitude
 The longitude of your location, in degrees.
 
-### title
-This sets what the calendar events title will be, you can use any of the below variables in any order:
 
-astronomical_twilight_begin		Start of astronomical twilight
-nautical_twilight_begin			Start of nautical twilight
-civil_twilight_begin			Start of civil twilight
-sunrise							Sunrise
-transit							Noon
-sunset							Sunset
-civil_twilight_end				End of civil twilight
-nautical_twilight_end			End of nautical twilight
-astronomical_twilight_end		End of astronomical twilight
-length							Length of time from Sunrise until Sunset
+### title
+This sets what the calendar events title will be. You can use any of the below variables in any order:
+
+variable						| description
+:---------------				| :---------
+astronomical_twilight_begin		| Start of astronomical twilight
+nautical_twilight_begin			| Start of nautical twilight
+civil_twilight_begin			| Start of civil twilight
+sunrise							| Sunrise
+transit							| Noon
+sunset							| Sunset
+civil_twilight_end				| End of civil twilight
+nautical_twilight_end			| End of nautical twilight
+astronomical_twilight_end		| End of astronomical twilight
+length							| Length of time from Sunrise until Sunset
 
 ### labels
 Normally these values are not prefixed with any text to conserve space, but you can change that by adding an URL parameter with the variable name prefixed with 'label_', for example:
