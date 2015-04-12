@@ -32,7 +32,7 @@ date_default_timezone_set($timezone->timeZoneId);
 // buffer output so if anything fails, it wont display a partial calendar
 $out = "BEGIN:VCALENDAR\r\n";
 $out .= "PRODID:-//Permanent Solutions Ltd//Sunrise Sunset Calendar//EN\r\n";
-$out .= "VERSION:5.1.3\r\n";
+$out .= "VERSION:5.1.4\r\n";
 $out .= "CALSCALE:GREGORIAN\r\n";
 $out .= "METHOD:PUBLISH\r\n";
 $out .= "X-WR-TIMEZONE:".$timezone->timeZoneId."\r\n";
@@ -53,7 +53,7 @@ for ($day=param('start', 0); $day<=param('end', 365); $day++)
 	$out .= "DTSTART;VALUE=DATE:".date('Ymd', strtotime($now.' +'.$day.' days'))."\r\n";
 	$out .= "DTEND;VALUE=DATE:".date('Ymd', strtotime($now.' +'.($day+1).' days'))."\r\n";
 	$out .= "DTSTAMP:".date('Ymd\THis\Z')."\r\n";
-	$out .= "UID:Permanent-Sunrise-".date('Ymd', strtotime($now.' +'.$day.' days'))."\r\n";
+	$out .= "UID:Permanent-Sunrise-".date('Ymd', strtotime($now.' +'.$day.' days'))."-$version\r\n";
 	$out .= "CLASS:PUBLIC\r\n";
 	$out .= "CREATED:$version\r\n";
 	$out .= "GEO:$latitude;$longitude\r\n"; //@see http://tools.ietf.org/html/rfc2445
