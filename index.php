@@ -104,7 +104,7 @@ $out .= 'END:VCALENDAR';
 
 
 header('Content-type: text/calendar; charset=utf-8');
-header('Content-Disposition: inline; filename=sunrise.ics');
+header('Content-Disposition: inline; filename='.param('filename'));
 echo $out;
 
 

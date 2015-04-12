@@ -5,7 +5,7 @@ Display sunset and sunrise times as an all day event from a constantly updating 
 
 Example calendar URL:
 
-	http://sun.is.permanent.ee/?latitude=59.4388618469&longitude=24.7544727325&title=sunrise,sunset,length&label_length=☼&label_sunrise=↑&label_sunset=↓&start=-100&end=365
+	http://sun.is.permanent.ee/?latitude=59.4388618469&longitude=24.7544727325&title=sunrise,sunset,length&label_length=☼&label_sunrise=↑&label_sunset=↓&start=-100&end=365&filename=sunrise.ics
 
 Modify the parameters in the URL according to your needs. You will atleast need to modify latitude and longitude.
 
@@ -54,3 +54,6 @@ What day to start the calendar on from today.
 What day to end the calendar on from today.
 
 	end=365
+
+### filename
+This is the filename of the file offered for download when you access the calendar URL directly. This needs to be the last URL parameter, because otherwise Google Calendar will not read anything from this URL and will silently fail.
