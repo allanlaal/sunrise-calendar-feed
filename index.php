@@ -12,7 +12,7 @@ $default_longitude = 24.7544727325;
 
 function param($name, $default='')
 {
-	echo "&$name=$default"; // builds URL parameters with the default values
+//	echo "&$name=$default"; // builds URL parameters with the default values
 	
 	if (
 		isset($_GET[$name])
