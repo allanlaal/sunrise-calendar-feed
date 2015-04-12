@@ -6,7 +6,7 @@
  * @example http://sun.is.permanent.ee/?latitude=59.4388618469&longitude=24.7544727325&title=sunrise,sunset,length&label_sunrise=↑&label_sunset=↓&start=-100&end=365
  * @link https://github.com/allanlaal/sunrise
  */
-$version = '20150401T000000Z'; // modify this when you make changes in the code!
+$version = '20150410T000000Z'; // modify this when you make changes in the code!
 
 // include config:
 require_once('./config.php');
