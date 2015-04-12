@@ -70,7 +70,7 @@ for ($day=param('start', 0); $day<=param('end', 365); $day++)
 		$out .= date('H:i', $sun_info['civil_twilight_end']).			' End of civil twilight\n';
 		$out .= date('H:i', $sun_info['nautical_twilight_end']).		' End of nautical twilight\n';
 		$out .= date('H:i', $sun_info['astronomical_twilight_end']).	' End of astronomical twilight\n';
-		$out .= "\n";
+		$out .= '\n';
 		$out .= calc_day_length($sun_info['sunset'], $sun_info['sunrise']).											' Day length from Sunrise until Sunset\n';
 		$out .= calc_day_length($sun_info['civil_twilight_end'], $sun_info['civil_twilight_begin']).				' Day length for civil twilight\n';
 		$out .= calc_day_length($sun_info['nautical_twilight_end'], $sun_info['nautical_twilight_begin']).			' Day length for nautical twilight\n';
