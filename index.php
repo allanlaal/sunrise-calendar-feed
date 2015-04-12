@@ -32,9 +32,8 @@ function param($name, $default='')
 
 
 // buffer output so if anything fails, it wont display a partial calendar
-$out = '
-BEGIN:VCALENDAR
-PRODID:-//Permanent Solutions OÜ//Sunrise Sunset Calendar//EN
+$out = 'BEGIN:VCALENDAR
+PRODID:-//Permanent Solutions Ltd//Sunrise Sunset Calendar//EN
 VERSION:5.1
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
@@ -77,10 +76,11 @@ for ($day=param('start', 0); $day<=param('end', 365); $day++)
 			if ($title == 'length')
 			{
 				$day_length = $sun_info['sunset'] - $sun_info['sunrise'];
-				$day_lenth_h = round($day_length/60/60, PHP_ROUND_HALF_DOWN);
-				$day_lenth_min = round(($day_length - $day_lenth_h*60*60)/60);
+				$day_length_h = intval($day_length/60/60);
+				$day_length_min = round(($day_length - $day_length_h*60*60)/60, 0);
 
-				$out .= param('label_length', "")."{$day_lenth_h}h$day_lenth_min";
+				$out .= param('label_length', "")."{$day_length_h}h";
+				$out .= str_pad($day_length_min, 2, '0', STR_PAD_LEFT);
 			}
 			else
 			{
