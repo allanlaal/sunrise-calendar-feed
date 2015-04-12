@@ -4,7 +4,7 @@
  * @since 2015-04-12
  * @author Allan Laal <allan@permanent.ee>
  * @example http://sun.is.permanent.ee/?latitude=59.4388618469&longitude=24.7544727325&title=sunrise,sunset,length&label_sunrise=↑&label_sunset=↓&start=-100&end=365
- * @link https://github.com/allanlaal/sunrise
+ * @link https://github.com/allanlaal/sunrise-calendar-feed
  */
 $version = '20150410T000000Z'; // modify this when you make changes in the code!
 
@@ -36,7 +36,7 @@ $out .= "VERSION:5.1.4\r\n";
 $out .= "CALSCALE:GREGORIAN\r\n";
 $out .= "METHOD:PUBLISH\r\n";
 $out .= "X-WR-TIMEZONE:".$timezone->timeZoneId."\r\n";
-$out .= "URL:https://github.com/allanlaal/sunrise\r\n";
+$out .= "URL:https://github.com/allanlaal/sunrise-calendar-feed\r\n";
 $out .= "X-WR-CALNAME:Sunrise-Sunset\r\n";
 $out .= "X-WR-CALDESC:Display sunset and sunrise times as an all day event from a constantly updating vcalendar/ICS calendar in Google Calendar, your phone or elsewhere.\r\n";
 $out .= "X-LOTUS-CHARSET:UTF-8\r\n";
