@@ -109,8 +109,6 @@ for ($day=param('start', 0); $day<=param('end', 365); $day++)
 	$out .= "TRANSP:OPAQUE\r\n";
 	$out .= "END:VEVENT\r\n";
 	
-	echo '<pre>';
-	echo  str_replace('\n', "\n", $out); die();
 }
 
 $out .= 'END:VCALENDAR';
