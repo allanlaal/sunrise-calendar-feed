@@ -1,10 +1,11 @@
 # sunrise
-Display sunset and sunrise times as an all day event from a constantly updating vcalendar in Google Calendar, your phone or elsewhere.
+Display sunset and sunrise times as an all day event from a constantly updating vcalendar/ICS calendar in Google Calendar, your phone or elsewhere.
 
 ## usage
 
 Example calendar URL:
-http://sun.is.permanent.ee/?latitude=59.4388618469&longitude=24.7544727325&title=sunrise,sunset,length&label_length=☼&label_sunrise=↑&label_sunset=↓&start=-100&end=365
+
+	http://sun.is.permanent.ee/?latitude=59.4388618469&longitude=24.7544727325&title=sunrise,sunset,length&label_length=☼&label_sunrise=↑&label_sunset=↓&start=-100&end=365
 
 Modify the parameters in the URL according to your needs. You will atleast need to modify latitude and longitude.
 
