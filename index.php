@@ -61,15 +61,20 @@ for ($day=param('start', 0); $day<=param('end', 365); $day++)
 	$sun_info = date_sun_info(strtotime($now.' +'.$day.' days'), $latitude, $longitude);
 
 	$out .= 'DESCRIPTION:';
-		$out .= date('H:i', $sun_info['astronomical_twilight_begin']).	' Start of astronomical twilight\r\n\r\n';
-		$out .= date('H:i', $sun_info['nautical_twilight_begin']).		' Start of nautical twilight\r\n\r\n';
-		$out .= date('H:i', $sun_info['civil_twilight_begin']).		' Start of civil twilight\r\n\r\n';
-		$out .= date('H:i', $sun_info['sunrise']).						' Sunrise\r\n\r\n';
-		$out .= date('H:i', $sun_info['transit']).						' Noon\r\n\r\n';
-		$out .= date('H:i', $sun_info['sunset']).						' Sunset\r\n\r\n';
-		$out .= date('H:i', $sun_info['civil_twilight_end']).			' End of civil twilight\r\n\r\n';
-		$out .= date('H:i', $sun_info['nautical_twilight_end']).		' End of nautical twilight\r\n\r\n';
-		$out .= date('H:i', $sun_info['astronomical_twilight_end']).	' End of astronomical twilight\r\n\r\n';
+		$out .= date('H:i', $sun_info['astronomical_twilight_begin']).	' Start of astronomical twilight\n';
+		$out .= date('H:i', $sun_info['nautical_twilight_begin']).		' Start of nautical twilight\n';
+		$out .= date('H:i', $sun_info['civil_twilight_begin']).			' Start of civil twilight\n';
+		$out .= date('H:i', $sun_info['sunrise']).						' Sunrise\n';
+		$out .= date('H:i', $sun_info['transit']).						' Noon\n';
+		$out .= date('H:i', $sun_info['sunset']).						' Sunset\n';
+		$out .= date('H:i', $sun_info['civil_twilight_end']).			' End of civil twilight\n';
+		$out .= date('H:i', $sun_info['nautical_twilight_end']).		' End of nautical twilight\n';
+		$out .= date('H:i', $sun_info['astronomical_twilight_end']).	' End of astronomical twilight\n';
+		$out .= "\n";
+		$out .= calc_day_length($sun_info['sunset'], $sun_info['sunrise']).											' Day length from Sunrise until Sunset\n';
+		$out .= calc_day_length($sun_info['civil_twilight_end'], $sun_info['civil_twilight_begin']).				' Day length for civil twilight\n';
+		$out .= calc_day_length($sun_info['nautical_twilight_end'], $sun_info['nautical_twilight_begin']).			' Day length for nautical twilight\n';
+		$out .= calc_day_length($sun_info['astronomical_twilight_end'], $sun_info['astronomical_twilight_begin']).	' Day length for astronomical twilight\n';
 	$out .= "\r\n";
 
 	$out .= "LAST-MODIFIED:$version\r\n";
@@ -79,14 +84,19 @@ for ($day=param('start', 0); $day<=param('end', 365); $day++)
 	$out .= "SUMMARY:";
 		foreach (explode(',', param('title', 'sunrise,sunset,length')) as $title)
 		{
-			if ($title == 'length')
+			if (strpos($title, 'length') !== FALSE)
 			{
-				$day_length = $sun_info['sunset'] - $sun_info['sunrise'];
-				$day_length_h = intval($day_length/60/60);
-				$day_length_min = round(($day_length - $day_length_h*60*60)/60, 0);
-
-				$out .= param('label_length', "")."{$day_length_h}h";
-				$out .= str_pad($day_length_min, 2, '0', STR_PAD_LEFT);
+				if ($title !== 'length')
+				{
+					$type = str_replace('length_', '', $title);
+					$length = calc_day_length($sun_info[$type.'_twilight_end'], $sun_info[$type.'_twilight_begin']);
+				}
+				else
+				{
+					$length = calc_day_length($sun_info['sunset'], $sun_info['sunrise']);
+				}
+				
+				$out .= param('label_'.$title, "").$length;
 			}
 			else
 			{
@@ -98,6 +108,9 @@ for ($day=param('start', 0); $day<=param('end', 365); $day++)
 	
 	$out .= "TRANSP:OPAQUE\r\n";
 	$out .= "END:VEVENT\r\n";
+	
+	echo '<pre>';
+	echo  str_replace('\n', "\n", $out); die();
 }
 
 $out .= 'END:VCALENDAR';
@@ -108,6 +121,29 @@ header('Content-Disposition: inline; filename='.param('filename'));
 echo $out;
 
 
+/**
+ * @param int $sunset
+ * @param int $sunrise
+ * @return string
+ * @example 14h28
+ */
+function calc_day_length($sunset, $sunrise)
+{
+	$day_length = $sunset - $sunrise;
+	$day_length_h = intval($day_length/60/60);
+	$day_length_min = round(($day_length - $day_length_h*60*60)/60, 0);
+	$length = "{$day_length_h}h".str_pad($day_length_min, 2, '0', STR_PAD_LEFT);
+	
+	return $length;
+}
+
+
+/**
+ * @param string $name
+ * @param string $default
+ * @return string
+ * @desc GET an URL parameter
+ */
 function param($name, $default='')
 {
 //	echo "&$name=$default"; // builds URL parameters with the default values

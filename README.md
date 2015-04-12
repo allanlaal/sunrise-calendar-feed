@@ -5,7 +5,7 @@ Display sunset and sunrise times as an all day event from a constantly updating 
 
 Example calendar URL:
 
-	http://sun.is.permanent.ee/?latitude=59.4388618469&longitude=24.7544727325&title=sunrise,sunset,length&label_length=☼&label_sunrise=↑&label_sunset=↓&start=-100&end=365&filename=sunrise.ics
+	http://sun.is.permanent.ee/?latitude=59.4388618469&longitude=24.7544727325&title=sunrise,sunset,length_civil&label_length_civil=☼&label_sunrise=↑&label_sunset=↓&start=-100&end=365&filename=sunrise.ics
 
 Modify the parameters in the URL according to your needs. You will atleast need to modify latitude and longitude.
 
@@ -36,9 +36,12 @@ sunset							| Sunset
 civil_twilight_end				| End of civil twilight
 nautical_twilight_end			| End of nautical twilight
 astronomical_twilight_end		| End of astronomical twilight
-length							| Length of time from Sunrise until Sunset
+length							| Day length from Sunrise until Sunset
+length_civil					| Day length for civil twilight
+length_nautical					| Day length for nautical twilight
+length_astronomical				| Day length for astronomical twilight
 
-	title=sunrise,sunset,length
+	title=sunrise,sunset,length,length_civil
 
 ### labels
 Normally the values of the variables in the calendar event titles are not prefixed with any text to conserve space, but you can change that by adding an URL parameter with the variable name prefixed with 'label_'.
