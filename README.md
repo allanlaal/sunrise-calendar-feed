@@ -9,8 +9,7 @@ Example calendar URL:
 
 Modify the parameters in the URL according to your needs. You will atleast need to modify latitude and longitude.
 
-[How To Use iCal ICS files with Google Calendar](https://eventespresso.com/wiki/how-to-use-ical-ics-files-google-calendar/)
-
+Add the above url into your Google Calendar at Other Calendars -> down arrow box thingie -> Add by URL
 
 ### latitude
 The latitude of your location, in degrees.
@@ -60,3 +59,5 @@ What day to end the calendar on from today.
 
 ### filename
 This is the filename of the file offered for download when you access the calendar URL directly. This needs to be the last URL parameter, because otherwise Google Calendar will not read anything from this URL and will silently fail.
+
+	filename=sunrise.ics
